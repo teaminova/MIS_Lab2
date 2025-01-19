@@ -3,8 +3,9 @@ import 'package:jokes_app/models/joke.dart';
 
 class JokeCard extends StatelessWidget {
   final Joke joke;
+  final VoidCallback onPressed;
 
-  const JokeCard({super.key, required this.joke});
+  const JokeCard({super.key, required this.joke, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,12 @@ class JokeCard extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.secondary,
                 ),
+            ),
+            const SizedBox(height: 10),
+            IconButton(
+              icon: joke.isFavorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border),
+              color: Colors.red,
+              onPressed: onPressed,
             ),
           ],
         ),
